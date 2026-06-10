@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.25rem;
+
+    /* shadcn semantic tokens mapped to the brand palette */
+    --background: 40 30% 99%;
+    --foreground: 240 38% 6%;
+    --primary: 344 100% 78%;
+    --primary-foreground: 240 38% 6%;
+    --muted: 252 38% 95%;
+    --muted-foreground: 248 14% 40%;
+    --border: 250 25% 90%;
+    --input: 250 25% 90%;
+    --ring: 250 35% 60%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Prevent layout shift from scrollbar on modal open */
+  body.no-scroll {
+    overflow: hidden;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-serif;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: #FF8DA7;
+    color: #0A0A15;
+  }
+
+  /* Elegant focus ring */
+  :focus-visible {
+    outline: 2px solid #6D5D8E;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .container-luxe {
+    @apply mx-auto w-full max-w-8xl px-5 sm:px-6 lg:px-10 xl:px-16;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-[11px] font-medium uppercase tracking-luxe text-lavender-royal;
+  }
+
+  .eyebrow::before {
+    content: '';
+    @apply h-px w-8 bg-pink;
+  }
+
+  .link-underline {
+    @apply relative inline-block;
+  }
+  .link-underline::after {
+    content: '';
+    @apply absolute -bottom-0.5 left-0 h-px w-0 bg-current transition-all duration-300 ease-out;
+  }
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+
+  /* Editorial gradient placeholder used until real photography is supplied */
+  .placeholder-luxe {
+    background:
+      radial-gradient(120% 90% at 20% 10%, rgba(255, 141, 167, 0.55), transparent 55%),
+      radial-gradient(120% 120% at 85% 90%, rgba(109, 93, 142, 0.65), transparent 60%),
+      linear-gradient(135deg, #9C87CC 0%, #9993CF 45%, #6D5D8E 100%);
+  }
+
+  /* ---- Brand colour treatments ---- */
+
+  /* Deep regal band — used on the announcement bar & accents */
+  .bg-brand-deep {
+    background: linear-gradient(100deg, #6D5D8E 0%, #0A0A15 48%, #6D5D8E 100%);
+  }
+
+  /* Soft lavender wash for light sections */
+  .bg-lavender-veil {
+    background: linear-gradient(180deg, #FBFAF8 0%, #EDEAF6 100%);
+  }
+  .bg-lavender-veil-soft {
+    background: linear-gradient(180deg, #FBFAF8 0%, rgba(237, 234, 246, 0.55) 100%);
+  }
+
+  /* Pink → lavender gradient text for accent words */
+  .text-brand-gradient {
+    background: linear-gradient(92deg, #FF8DA7 0%, #9C87CC 60%, #6D5D8E 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Thin brand ribbon used as a section/footer accent */
+  .brand-ribbon {
+    background: linear-gradient(90deg, #FF8DA7 0%, #9C87CC 45%, #6D5D8E 100%);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  /* Hide scrollbar for carousels while keeping scroll */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
