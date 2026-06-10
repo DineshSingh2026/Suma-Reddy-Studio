@@ -1,0 +1,16 @@
+# Render Blueprint for Suma Reddy Studio (Next.js 16)
+# Deploy: Render Dashboard -> New -> Blueprint -> connect this repo.
+services:
+  - type: web
+    name: suma-reddy-studio
+    runtime: node
+    plan: free
+    autoDeploy: true
+    buildCommand: npm ci && npm run build
+    startCommand: npm run start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
+      - key: NODE_ENV
+        value: production
